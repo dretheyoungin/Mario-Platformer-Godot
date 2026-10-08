@@ -25,9 +25,9 @@ size = Vector2(14.5, 68)
 
 [sub_resource type="Curve2D" id="Curve2D_aqk2v"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -731, 1237, 0, 0, 0, 0, -493, 1234)
+"points": PackedVector2Array(0, 0, 0, 0, -687, 1222, 0, 0, 0, 0, -472, 1231, 0, 0, 0, 0, -558, 1215)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o5tgd"]
 shader = ExtResource("3_tlwt5")
@@ -45,9 +45,6 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2pp6"]
 size = Vector2(170.12561, 196.4364)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7cuq"]
-size = Vector2(68.29878, 9.08658)
 
 [node name="World" type="Node2D" unique_id=309084871]
 script = ExtResource("1_fj7yv")
@@ -101,29 +98,19 @@ curve = SubResource("Curve2D_aqk2v")
 script = ExtResource("3_036b0")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="EnemyTrack" unique_id=177149206]
-position = Vector2(-731, 1237)
+position = Vector2(-687, 1222)
 rotation = 0.041836042
-rotates = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EnemyTrack/PathFollow2D" unique_id=740474986]
 material = SubResource("ShaderMaterial_o5tgd")
-position = Vector2(66.13743, -69.827225)
-rotation = -0.033161256
+position = Vector2(62.261757, -90.68338)
 sprite_frames = SubResource("SpriteFrames_1vivr")
 autoplay = "default"
 
 [node name="EnemyHitbox" type="Area2D" parent="EnemyTrack/PathFollow2D" unique_id=931698673]
-position = Vector2(0.4600622, 10.990375)
-rotation = -0.033161256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTrack/PathFollow2D/EnemyHitbox" unique_id=1908223646]
-position = Vector2(60.388977, -87.602295)
+position = Vector2(59.276, -87.98193)
 shape = SubResource("RectangleShape2D_d2pp6")
-
-[node name="StompDetector" type="Area2D" parent="EnemyTrack/PathFollow2D/EnemyHitbox" unique_id=97439724]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTrack/PathFollow2D/EnemyHitbox/StompDetector" unique_id=1155925269]
-position = Vector2(70.32001, -197.10828)
-shape = SubResource("RectangleShape2D_u7cuq")
 
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
