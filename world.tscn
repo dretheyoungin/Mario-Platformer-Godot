@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://3a21u3s3xrfm"]
+
+[ext_resource type="PackedScene" uid="uid://hj6hvboa7dsk" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://doomohg331kj8" path="res://world.gd" id="1_fj7yv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(7614, 4.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(30, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
+size = Vector2(26, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5gy4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbdty"]
+size = Vector2(38, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auskg"]
+size = Vector2(14.5, 68)
+
+[node name="World" type="Node2D" unique_id=309084871]
+script = ExtResource("1_fj7yv")
+
+[node name="floor" type="StaticBody2D" parent="." unique_id=1711211731]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor" unique_id=668879262]
+position = Vector2(1025, 1249.375)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Player" parent="floor" unique_id=1441997695 instance=ExtResource("1_f3sb7")]
+position = Vector2(-222.99998, 1048)
+
+[node name="Platformer1" type="StaticBody2D" parent="." unique_id=723714903]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platformer1" unique_id=1734947051]
+position = Vector2(152, 1173)
+shape = SubResource("RectangleShape2D_8vrlf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platformer1" unique_id=706493713]
+position = Vector2(358, 1123)
+shape = SubResource("RectangleShape2D_fj7yv")
+
+[node name="ColorRect" type="ColorRect" parent="Platformer1" unique_id=326828319]
+offset_left = 137.0
+offset_top = 1166.0
+offset_right = 162.0
+offset_bottom = 1190.0
+color = Color(1, 1, 1, 0.08235294)
+
+[node name="floor2" type="StaticBody2D" parent="." unique_id=874868383]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor2" unique_id=1899893473]
+shape = SubResource("RectangleShape2D_v5gy4")
+
+[node name="DeathZone" type="Area2D" parent="." unique_id=1412205972]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1419838148]
+position = Vector2(286, 1269)
+shape = SubResource("RectangleShape2D_qbdty")
+
+[node name="GoalFlag" type="Area2D" parent="." unique_id=1199914024]
+position = Vector2(88, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalFlag" unique_id=2049914624]
+position = Vector2(721.25, 1205)
+shape = SubResource("RectangleShape2D_auskg")
+
+[connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
